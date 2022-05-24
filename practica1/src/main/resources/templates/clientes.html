@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>clientes</title>
+</head>
+<body>
+
+<div th:each="cliente: ${clientes}" th:unless="${clientes.isEmpty()}">
+
+    <div>
+        <p th:text="${cliente.nombre}"></p>
+        <p th:text="${cliente.apellidos}"></p>
+        <p th:text="${cliente.email}"></p>
+        <a th:href="@{updateCliente(idCliente=${cliente.id})}"><button>modificar</button></a>
+        <a th:href="@{delete(idCliente=${cliente.id})}"><button type="button">borrar</button></a>
+    </div>
+</div>
+
+<div th:if="${clientes.isEmpty()}"><p>No hay clientes</p></div>
+
+<a th:href="@{insertCliente}"><button th:text="${insert}">modificar</button></a>
+
+</body>
+</html>
